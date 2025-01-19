@@ -1,31 +1,62 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { Flex, Layout } from 'antd';
+import { Link } from "react-router-dom";
 
-import { Layout } from 'antd';
-
-import { useTheme } from "../../../theme/components/ThemeProvider"
-
-import Logo from "../Logo"
+import { useTheme } from "../../../theme/components/ThemeProvider";
+import Logo from "../Logo";
+import UserProfileDropdown from "./UserProfileDropdown";
 
 const { Header } = Layout;
 
-const DefaultHeaderStyle: React.CSSProperties = {
-  display: 'flex',
-  alignItems: 'center',
+const HeaderStyle: React.CSSProperties = {
+  height: 64,
   padding: '0 20px',
-  maxHeight: '64px',
-  width: '100%',
   position: 'relative',
+}
+
+const UnauthenticatedTools: React.FC = () => {
+  const theme = useTheme();
+
+  return (
+    <Flex justify="end" align="center" gap={8}>
+      <Link style={{
+        textDecoration: 'none',
+        color: theme.colors?.text?.primaryLight,
+      }} to="/signin">Sign in</Link>
+      <Link style={{
+        textDecoration: 'none',
+        color: theme.colors?.text?.primaryLight,
+      }} to="/signup">Sign up</Link>
+    </Flex>
+  )
+}
+
+const AuthenticatedTools: React.FC = () => {
+  return (
+    <UserProfileDropdown />
+  )
 }
 
 const DefaultHeader: React.FC = () => {
   const theme = useTheme();
+  const { isAuthenticated } = useSelector((state: any) => state.auth);
 
   return (
     <Header style={{
-      ...DefaultHeaderStyle,
+      ...HeaderStyle,
       backgroundColor: theme.colors?.background?.primary,
     }}>
-      <Logo />
+      <Flex 
+      justify="space-between"
+      align="center"
+      style={{ 
+        width: '100%',
+        height: '100%',
+      }}>
+        <Logo />
+        {isAuthenticated ? <AuthenticatedTools /> : <UnauthenticatedTools />}
+      </Flex>
     </Header>
   )
 };

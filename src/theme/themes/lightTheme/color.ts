@@ -132,6 +132,7 @@ const lightThemeColors: ThemeColors = {
     secondary: 'rgba(0, 0, 0, 0.65)',
     tertiary: 'rgba(0, 0, 0, 0.45)',
     disabled: 'rgba(0, 0, 0, 0.25)',
+    primaryLight: '#ffffff',
     inverse: '#ffffff',
     success: '#52c41a',
     warning: '#faad14',

@@ -2,7 +2,6 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface AuthState {
   isAuthenticated: boolean;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   user: any | null;
   loading: boolean;
   error: string | null;
@@ -23,7 +22,6 @@ const authSlice = createSlice({
       state.loading = true;
       state.error = null;
     },
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     loginSuccess: (state, action: PayloadAction<any>) => {
       state.isAuthenticated = true;
       state.user = action.payload;
