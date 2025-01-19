@@ -13,7 +13,7 @@ const login = async (email: string, password: string) => {
     }
   );
 
-  return response.data;
+  return response;
 };
 
 const setTokens = (accessToken: string, refreshToken: string) => {
@@ -21,9 +21,27 @@ const setTokens = (accessToken: string, refreshToken: string) => {
   localStorage.setItem("refreshToken", refreshToken);
 };
 
-const Auth = {
-  login,
-  setTokens,
+const getAuthenticatedHeader = (headers: any = {}) => {
+  const accessToken = localStorage.getItem("accessToken");
+  return {
+    headers: {
+      ...headers,
+      Authorization: `Bearer ${accessToken}`,
+    },
+  };
 };
 
-export default Auth;
+const verifyToken = async () => {
+  const headers = getAuthenticatedHeader();
+  const response = await axios.get(AUTH_API_URL + "/verify-token", headers);
+  return response;
+};
+
+const AuthService = {
+  login,
+  setTokens,
+  getAuthenticatedHeader,
+  verifyToken,
+};
+
+export default AuthService;

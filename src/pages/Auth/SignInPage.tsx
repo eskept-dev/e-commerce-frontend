@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Button, Card, Flex, Form, Input, Typography, message } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
 import { GoogleOutlined } from '@ant-design/icons';
 
 import { useTheme } from '../../theme/components/ThemeProvider';
 import DefaultLayout from '../../layouts/DefaultLayout';
-import Auth from '../../services/Auth';
-
+import { AuthService } from '../../services';
+import { setAuthenticated } from '../../store/slices/authSlice';
 const { Title, Text } = Typography;
 
 interface SignInForm {
@@ -19,13 +20,16 @@ const SignInPage: React.FC = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const previousPath = localStorage.getItem('previousPath') || '/';
+  const dispatch = useDispatch();
 
   const onFinish = async (values: SignInForm) => {
     try {
       setLoading(true);
-      const response = await Auth.login(values.email, values.password);
-      if (response.access_token && response.refresh_token) {
-        Auth.setTokens(response.access_token, response.refresh_token);
+      const response = await AuthService.login(values.email, values.password);
+      if (response.status === 200) {
+        const { access_token, refresh_token } = response.data;
+        AuthService.setTokens(access_token, refresh_token);
+        dispatch(setAuthenticated(true));
         navigate(previousPath);
       }
     } catch (error: any) {
