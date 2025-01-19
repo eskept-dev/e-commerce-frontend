@@ -16,6 +16,11 @@ const login = async (email: string, password: string) => {
   return response;
 };
 
+const logout = () => {
+  localStorage.removeItem("accessToken");
+  localStorage.removeItem("refreshToken");
+};
+
 const setTokens = (accessToken: string, refreshToken: string) => {
   localStorage.setItem("accessToken", accessToken);
   localStorage.setItem("refreshToken", refreshToken);
@@ -39,6 +44,7 @@ const verifyToken = async () => {
 
 const AuthService = {
   login,
+  logout,
   setTokens,
   getAuthenticatedHeader,
   verifyToken,
