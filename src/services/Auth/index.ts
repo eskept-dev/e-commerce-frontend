@@ -42,12 +42,21 @@ const verifyToken = async () => {
   return response;
 };
 
+const sendActivationEmail = async (email: string) => {
+  const response = await axios.post(
+    AUTH_API_URL + "/send-activation-email",
+    { email },
+  );
+  return response;
+};
+
 const AuthService = {
   login,
   logout,
   setTokens,
   getAuthenticatedHeader,
   verifyToken,
+  sendActivationEmail,
 };
 
 export default AuthService;

@@ -105,7 +105,7 @@ const SignInPage: React.FC = () => {
 
               <Flex align="center" justify="flext-start" gap={4}>
                 <Text>Send me an</Text>
-                <Link to="/auth/sign_in/activation">activation link</Link>
+                <Link to={'/auth/sign_in/activation'}>activation link</Link>
               </Flex>
             </Flex>
           </Card>
