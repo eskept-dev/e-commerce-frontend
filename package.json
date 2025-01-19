@@ -10,16 +10,20 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "antd": "^5.13.2",
     "@ant-design/icons": "^5.2.6",
+    "@reduxjs/toolkit": "^2.5.0",
+    "antd": "^5.13.2",
+    "axios": "^1.7.9",
+    "clsx": "^2.1.0",
     "lucide-react": "^0.314.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.21.3",
-    "clsx": "^2.1.0"
+    "react-redux": "^9.2.0",
+    "react-router-dom": "^6.21.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
+    "@types/node": "^22.10.7",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
     "@vitejs/plugin-react": "^4.3.4",

@@ -69,6 +69,7 @@ export interface ThemeColors {
     secondary: ColorValue;
     tertiary: ColorValue;
     disabled: ColorValue;
+    primaryLight: ColorValue;
     inverse: ColorValue;
     success: ColorValue;
     warning: ColorValue;

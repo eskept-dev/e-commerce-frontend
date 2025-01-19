@@ -5,6 +5,8 @@ import { Flex, Typography } from 'antd';
 
 import logo from '../../../assets/logo.svg';
 
+import { useTheme } from '../../../theme/components/ThemeProvider';
+
 const { Title } = Typography;
 
 const LogoStyle: React.CSSProperties = {
@@ -12,13 +14,14 @@ const LogoStyle: React.CSSProperties = {
   height: '25px',
 }
 
-const LogoNameStyle: React.CSSProperties = {
-  color: '#fff',
-  fontSize: '20px',
-  fontWeight: 'thin',
+const LogoContainerStyle: React.CSSProperties = {
+  padding: '0',
+  cursor: 'pointer',
 }
 
 const Logo: React.FC = () => {
+  const theme = useTheme();
+
   return (
     <Link to="/">
       <Flex
@@ -26,10 +29,14 @@ const Logo: React.FC = () => {
         justify="flex-start"
         align="center"
         gap={8}
-        style={{ cursor: 'pointer' }}
+        style={LogoContainerStyle}
       >
         <img src={logo} alt="logo" style={LogoStyle} />
-        <Title level={1} style={LogoNameStyle}>Eskept</Title>
+        <Title level={1} style={{
+          color: theme.colors?.text?.primaryLight,
+          fontSize: '20px',
+          fontWeight: 'thin',
+        }}>Eskept</Title>
       </Flex>
     </Link>
   )
