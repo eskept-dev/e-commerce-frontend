@@ -12,6 +12,9 @@ const DefaultHeaderStyle: React.CSSProperties = {
   display: 'flex',
   alignItems: 'center',
   padding: '0 20px',
+  maxHeight: '64px',
+  width: '100%',
+  position: 'relative',
 }
 
 const DefaultHeader: React.FC = () => {
