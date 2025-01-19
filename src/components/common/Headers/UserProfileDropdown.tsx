@@ -12,11 +12,11 @@ const { Text } = Typography;
 const dropdownItems: MenuProps['items'] = [
   {
     key: 'profile',
-    label: <Link to="/profile">Profile</Link>,
+    label: <Link to="/user/profile">Profile</Link>,
   },
   {
     key: 'signout',
-    label: <Link to="/signout">Sign out</Link>,
+    label: <Link to="/auth/sign_out">Sign out</Link>,
   },
 ];
 

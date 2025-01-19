@@ -17,17 +17,18 @@ const HeaderStyle: React.CSSProperties = {
 
 const UnauthenticatedTools: React.FC = () => {
   const theme = useTheme();
+  const currentPath = window.location.pathname; 
 
   return (
     <Flex justify="end" align="center" gap={8}>
       <Link style={{
         textDecoration: 'none',
         color: theme.colors?.text?.primaryLight,
-      }} to="/signin">Sign in</Link>
+      }} to={`/auth/sign_in?redirect_to=${currentPath}`}>Sign in</Link>
       <Link style={{
         textDecoration: 'none',
         color: theme.colors?.text?.primaryLight,
-      }} to="/signup">Sign up</Link>
+      }} to={`/auth/sign_up?redirect_to=${currentPath}`}>Sign up</Link>
     </Flex>
   )
 }
