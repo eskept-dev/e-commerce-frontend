@@ -57,7 +57,7 @@ const SignInPage: React.FC = () => {
           flex={1}
         >
           <Card style={{ width: 400, maxWidth: '100%' }}>
-            <Flex vertical gap={24}>
+            <Flex vertical gap={8}>
               <Title level={2} style={{ textAlign: 'center', margin: 0 }}>
                 Sign in to Eskept
               </Title>
@@ -86,10 +86,10 @@ const SignInPage: React.FC = () => {
                 </Form.Item>
 
                 <Form.Item>
-                  <Button 
-                    type="primary" 
-                    htmlType="submit" 
-                    block 
+                  <Button
+                    type="primary"
+                    htmlType="submit"
+                    block
                     size="large"
                     loading={loading}
                   >
@@ -98,12 +98,21 @@ const SignInPage: React.FC = () => {
                 </Form.Item>
               </Form>
 
-              <Flex align="center" justify="center" gap={4}>
+              <Flex align="center" justify="flext-start" gap={4}>
                 <Text>Don't have an account?</Text>
                 <Link to="/sign_up">Sign up</Link>
               </Flex>
+
+              <Flex align="center" justify="flext-start" gap={4}>
+                <Text>Send me an</Text>
+                <Link to="/auth/sign_in/activation">activation link</Link>
+              </Flex>
             </Flex>
           </Card>
+
+          <Flex align="center" justify="center" gap={8} style={{ marginTop: 16 }}>
+            <Text>Or</Text>
+          </Flex>
 
           <Card style={{ width: 400, maxWidth: '100%', marginTop: 16 }}>
             <Button
