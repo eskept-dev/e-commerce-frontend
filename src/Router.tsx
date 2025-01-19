@@ -1,28 +1,11 @@
 import { Routes, Route } from 'react-router-dom';
 
-const Home = () => {
-    return (
-        <div className="home-container">
-            <h1>Home Page</h1>
-            <p>Discover amazing products at great prices!</p>
-        </div>
-    );
-};
-
-const Product = () => {
-    return (
-        <div className="product-container">
-            <h1>Product Page</h1>
-            <p>Discover amazing products at great prices!</p>
-        </div>
-    );
-};
+import HomePage from './pages/HomePage';
 
 const Router = () => {
     return (
         <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/product" element={<Product />} />
+            <Route path="/" element={<HomePage />} />
         </Routes>
     );
 };
